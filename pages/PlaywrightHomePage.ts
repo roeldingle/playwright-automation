@@ -4,7 +4,10 @@ export class PlaywrightHomePage {
   readonly getStartedLink: Locator;
 
   constructor(private readonly page: Page) {
-    this.getStartedLink = page.getByRole('link', {
+
+    const header = page.getByRole('banner'); // sample resilient locator
+
+    this.getStartedLink = header.getByRole('link', {
       name: 'Get started'
     });
   }

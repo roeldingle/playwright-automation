@@ -1,30 +1,16 @@
 import { z } from 'zod';
 
-const environmentSchema = z.enum([
-  'dev',
-  'qa',
-  'staging'
-]);
+const envSchema = z.object({
+  BASE_URL: z.string().url(),
 
-export const environment = environmentSchema.parse(
-  process.env.TEST_ENV ?? 'qa'
-);
+  TEST_ENV: z.enum([
+    'qa',
+    'staging',
+  ]),
 
-const environments = {
-  dev: {
-    baseURL: 'https://dev.example.com',
-    apiURL: 'https://api.dev.example.com'
-  },
+  TEST_USERNAME: z.string().min(1),
 
-  qa: {
-    baseURL: 'https://qa.example.com',
-    apiURL: 'https://api.qa.example.com'
-  },
+  TEST_PASSWORD: z.string().min(1),
+});
 
-  staging: {
-    baseURL: 'https://staging.example.com',
-    apiURL: 'https://api.staging.example.com'
-  }
-};
-
-export const config = environments[environment];
+export const env = envSchema.parse(process.env);

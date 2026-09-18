@@ -1,26 +1,16 @@
-import {
-  type APIRequestContext,
-  expect
-} from '@playwright/test';
-
-import {
-  createUserRequestSchema,
-  userResponseSchema,
-  type CreateUserRequest,
-  type UserResponse
-} from './schemas/user.schema';
+import {type APIRequestContext,expect} from '@playwright/test';
+import { createUserRequestSchema } from '../schemas/user-request.schema';
+import { userResponseSchema } from '../schemas/user-response.schema';
+import type { CreateUserRequest } from '../models/user-request';
+import type { UserResponse } from '../models/user-response';
 
 export class UsersApi {
-  constructor(
-    private readonly request: APIRequestContext
-  ) {}
+  
+  constructor(private readonly request: APIRequestContext) {}
 
-  async createUser(
-    user: CreateUserRequest
-  ): Promise<UserResponse> {
+  async createUser(user: CreateUserRequest): Promise<UserResponse> {
 
-    const requestData =
-      createUserRequestSchema.parse(user);
+    const requestData = createUserRequestSchema.parse(user);
 
     const response = await this.request.post('/users', {
       data: requestData
@@ -34,8 +24,8 @@ export class UsersApi {
   }
 
   async getUser(id: number): Promise<UserResponse> {
-    const response =
-      await this.request.get(`/users/${id}`);
+
+    const response = await this.request.get(`/users/${id}`);
 
     expect(response.ok()).toBeTruthy();
 
@@ -45,8 +35,8 @@ export class UsersApi {
   }
 
   async deleteUser(id: number): Promise<void> {
-    const response =
-      await this.request.delete(`/users/${id}`);
+
+    const response = await this.request.delete(`/users/${id}`);
 
     expect(response.ok()).toBeTruthy();
   }

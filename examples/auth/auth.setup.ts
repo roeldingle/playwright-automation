@@ -1,3 +1,14 @@
+/**
+ * ARCHITECTURE EXAMPLE ONLY
+ *
+ * Demonstrates Playwright authentication setup using environment
+ * credentials and storageState.
+ *
+ * This example is not part of the executable Playwright suite
+ * because the current test target does not provide the modeled
+ * /login and /dashboard authentication flow.
+ */
+
 import { test as setup, expect } from '@playwright/test';
 
 setup('authenticate', async ({ page }) => {
@@ -22,6 +33,6 @@ setup('authenticate', async ({ page }) => {
   await expect(page).toHaveURL(/dashboard/);
 
   await page.context().storageState({
-    path: 'playwright/.auth/user.json'
+    path: '.playwright/.auth/user.json',
   });
 });

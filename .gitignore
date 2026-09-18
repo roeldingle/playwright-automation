@@ -1,10 +1,15 @@
-node_modules/
-
+# Playwright generated files
 playwright-report/
 test-results/
+blob-report/
 
-playwright/.auth/
+# Playwright authentication state
+.playwright/.auth/
 
+# Environment / secrets
 .env
 .env.local
 .env.*.local
+
+# Dependencies
+node_modules/
