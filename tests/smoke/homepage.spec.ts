@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/test';
 
-test('Playwright homepage loads', {
+test('Homepage loads', {
   tag: '@smoke'
 }, async ({ page }) => {
 
@@ -8,5 +8,5 @@ test('Playwright homepage loads', {
   await page.goto('/');
 
   // Assert
-  await expect(page).toHaveTitle(/Playwright/);
+  await expect(page).toHaveTitle(/Automation Exercise/);
 });

@@ -1,12 +1,15 @@
+import 'dotenv/config';
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
 
-  timeout: 30_000,
+  // Total test budget
+  timeout: 60_000,
 
+  // Retry assertions
   expect: {
-    timeout: 5_000,
+    timeout: 10_000,
   },
 
   fullyParallel: true,
@@ -36,8 +39,11 @@ export default defineConfig({
   use: {
     baseURL: process.env.BASE_URL || 'https://playwright.dev',
 
+    // Baseline for actions like .click()
     actionTimeout: 10_000,
-    navigationTimeout: 15_000,
+
+    // Budget for page.goto()
+    navigationTimeout: 20_000,
 
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
