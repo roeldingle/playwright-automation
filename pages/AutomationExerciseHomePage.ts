@@ -5,7 +5,7 @@ The class provides methods to interact with the home page, such as navigating to
 ref: /
 */
 
-import { expect, type FrameLocator, type Locator, type Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 
 export class AutomationExerciseHomePage {
   readonly page: Page;
