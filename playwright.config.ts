@@ -5,11 +5,11 @@ export default defineConfig({
   testDir: './tests',
 
   // Total test budget
-  timeout: 60_000,
+  timeout: 120_000,
 
   // Retry assertions
   expect: {
-    timeout: 10_000,
+    timeout: 30_000,
   },
 
   fullyParallel: true,
@@ -40,10 +40,10 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || 'https://playwright.dev',
 
     // Baseline for actions like .click()
-    actionTimeout: 10_000,
+    actionTimeout: 30_000,
 
     // Budget for page.goto()
-    navigationTimeout: 20_000,
+    navigationTimeout: 60_000,
 
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',

@@ -48,7 +48,9 @@ export class AutomationExerciseAccountPage {
   async login(user: CreateUserRequest): Promise<void> {
     await this.loginEmailInput.fill(user.email);
     await this.loginPasswordInput.fill(user.password);
-    await this.loginButton.click();
+    await this.loginButton.click({ noWaitAfter: true });
+
+    await expect(this.page).toHaveURL(/\/$/);
     await expect(this.logoutLink).toBeVisible();
   }
 
