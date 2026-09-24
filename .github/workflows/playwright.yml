@@ -11,6 +11,7 @@ on:
 
 jobs:
   test:
+    name: Playwright - ${{ matrix.browser }}
     runs-on: ubuntu-latest
 
     strategy:
