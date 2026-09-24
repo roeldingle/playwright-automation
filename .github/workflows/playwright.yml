@@ -11,6 +11,7 @@ on:
 
 jobs:
   test:
+    name: Playwright - ${{ matrix.browser }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -19,7 +20,7 @@ jobs:
         browser: [chromium, firefox, webkit]
 
     env:
-      BASE_URL: https://playwright.dev
+      BASE_URL: https://automationexercise.com
 
     steps:
       - name: Checkout repository
