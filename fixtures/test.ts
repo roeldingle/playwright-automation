@@ -1,11 +1,13 @@
 import { test as base } from '@playwright/test';
 import { AutomationExerciseAccountApi } from '../api/AutomationExerciseAccountApi';
 import { AutomationExerciseAccountPage } from '../pages/AutomationExerciseAccountPage';
+import { AutomationExerciseHomePage } from '../pages/AutomationExerciseHomePage';
 import { AutomationExerciseRegistrationPage } from '../pages/AutomationExerciseRegistrationPage';
 
 type Fixtures = {
   accountApi: AutomationExerciseAccountApi;
   accountPage: AutomationExerciseAccountPage;
+  homePage: AutomationExerciseHomePage;
   registrationPage: AutomationExerciseRegistrationPage;
 };
 
@@ -18,6 +20,11 @@ export const test = base.extend<Fixtures>({
   accountPage: async ({ page }, use) => {
     const accountPage = new AutomationExerciseAccountPage(page);
     await use(accountPage);
+  },
+
+  homePage: async ({ page }, use) => {
+    const homePage = new AutomationExerciseHomePage(page);
+    await use(homePage);
   },
 
   registrationPage: async ({ page }, use) => {
